@@ -14,7 +14,7 @@ torch.set_num_threads(os.cpu_count() or 4)
 t0 = time.time()
 model = ChatterboxTTS.from_pretrained("cpu")
 print(f"modelo cargado en {time.time() - t0:.0f}s, sr={model.sr}", flush=True)
-lines = json.load(open(os.path.join(HERE, 'lines.json'), encoding='utf-8'))
+lines = json.load(open(os.path.join(HERE, sys.argv[2] if len(sys.argv) > 2 else 'lines.json'), encoding='utf-8'))
 os.makedirs(os.path.join(ROOT, 'out'), exist_ok=True)
 for L in lines:
     seed = 1000 * take + L['seed']

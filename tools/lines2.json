@@ -1,0 +1,14 @@
+[
+  {"id": "n3a", "who": "nora", "seed": 31, "ex": 0.7, "cfg": 0.4, "text": "Lo he mirado todo, Idris."},
+  {"id": "n3b", "who": "nora", "seed": 32, "ex": 0.7, "cfg": 0.4, "text": "Los vuelos, todo."},
+  {"id": "i4a", "who": "idris", "seed": 41, "ex": 0.85, "cfg": 0.22, "text": "¿En qué tormento te encuentras?"},
+  {"id": "i4b", "who": "idris", "seed": 42, "ex": 0.9, "cfg": 0.22, "text": "Que no me dejas ser tu mar muerto."},
+  {"id": "n5a", "who": "nora", "seed": 51, "ex": 1.25, "cfg": 0.25, "text": "Tenía miedo, ¿vale?"},
+  {"id": "n5b", "who": "nora", "seed": 52, "ex": 1.25, "cfg": 0.25, "text": "Me daba pánico."},
+  {"id": "n5c", "who": "nora", "seed": 53, "ex": 1.25, "cfg": 0.25, "text": "Que se me rompiera en las manos."},
+  {"id": "i5s", "who": "idris", "seed": 61, "ex": 0.75, "cfg": 0.2, "text": "No supiste sostener lo que tenías entre las manos."},
+  {"id": "i6s", "who": "idris", "seed": 62, "ex": 0.75, "cfg": 0.2, "text": "Y ahora me miras con la palma vacía."},
+  {"id": "i7s", "who": "idris", "seed": 63, "ex": 0.75, "cfg": 0.2, "text": "Esperando que me entrelace a tus planes."},
+  {"id": "i8a", "who": "idris", "seed": 71, "ex": 0.75, "cfg": 0.25, "text": "Llévate esto."},
+  {"id": "i8b", "who": "idris", "seed": 72, "ex": 0.8, "cfg": 0.22, "text": "Es lo que queda cuando el agua se va."}
+]

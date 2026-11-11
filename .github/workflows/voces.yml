@@ -42,22 +42,23 @@ jobs:
       - name: Sintetizar toma 1
         run: |
           set -o pipefail
-          python tools/synth.py 1 2>&1 | tee logs/toma1.log
+          python tools/synth.py 1 lines2.json 2>&1 | tee logs/frases_toma1.log
       - name: Subir toma 1
         run: |
           git config user.name "voces-bot"
           git config user.email "actions@users.noreply.github.com"
           git add out logs
-          git commit -m "Voces Mar muerto: toma 1"
+          git commit -m "Voces Mar muerto: frases lentas, toma 1"
+          git pull --rebase origin voces-mar-muerto || true
           git push origin HEAD:voces-mar-muerto
       - name: Sintetizar toma 2
         run: |
           set -o pipefail
-          python tools/synth.py 2 2>&1 | tee logs/toma2.log
+          python tools/synth.py 2 lines2.json 2>&1 | tee logs/frases_toma2.log
       - name: Subir toma 2
         run: |
           git add out logs
-          git commit -m "Voces Mar muerto: toma 2"
+          git commit -m "Voces Mar muerto: frases lentas, toma 2"
           git pull --rebase origin voces-mar-muerto || true
           git push origin HEAD:voces-mar-muerto
       - name: Subir registros si falla

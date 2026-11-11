@@ -1,0 +1,71 @@
+name: voces-mar-muerto
+on:
+  push:
+    branches: [voces-mar-muerto]
+    paths: ['tools/**', '.github/workflows/voces.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: voces
+  cancel-in-progress: true
+jobs:
+  tts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Código abierto de Chatterbox es-ES
+        run: |
+          mkdir -p logs
+          GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://huggingface.co/spaces/ResembleAI/Chatterbox-Multilingual-TTS-es-es space 2>&1 | tee logs/setup.log
+          echo "--- requirements" | tee -a logs/setup.log; cat space/requirements.txt | tee -a logs/setup.log
+      - name: Instalar dependencias (CPU)
+        run: |
+          set -o pipefail
+          python -m pip install --upgrade pip 2>&1 | tail -2 | tee -a logs/setup.log
+          grep -viE '^(gradio|spaces)' space/requirements.txt > req.txt
+          pip install -r req.txt soundfile --extra-index-url https://download.pytorch.org/whl/cpu 2>&1 | tail -25 | tee -a logs/setup.log
+          python -c "import torch; print('torch', torch.__version__)" | tee -a logs/setup.log
+      - name: Voces de referencia
+        run: |
+          mkdir -p ref
+          curl -sSL -o ref/es_m1.flac https://storage.googleapis.com/chatterbox-demo-samples/mtl_prompts/es_m1.flac
+          curl -sSL -o ref/es_es_f1.wav https://storage.googleapis.com/chatterbox-demo-samples/mtl-v3-single-language-prompts/es-es/es_es_f1.wav
+          ls -la ref | tee -a logs/setup.log
+      - name: Sintetizar toma 1
+        run: |
+          set -o pipefail
+          python tools/synth.py 1 2>&1 | tee logs/toma1.log
+      - name: Subir toma 1
+        run: |
+          git config user.name "voces-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add out logs
+          git commit -m "Voces Mar muerto: toma 1"
+          git push origin HEAD:voces-mar-muerto
+      - name: Sintetizar toma 2
+        run: |
+          set -o pipefail
+          python tools/synth.py 2 2>&1 | tee logs/toma2.log
+      - name: Subir toma 2
+        run: |
+          git add out logs
+          git commit -m "Voces Mar muerto: toma 2"
+          git pull --rebase origin voces-mar-muerto || true
+          git push origin HEAD:voces-mar-muerto
+      - name: Subir registros si falla
+        if: failure()
+        run: |
+          git config user.name "voces-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add logs out 2>/dev/null || true
+          git commit -m "Registros del fallo" || true
+          git pull --rebase origin voces-mar-muerto || true
+          git push origin HEAD:voces-mar-muerto || true

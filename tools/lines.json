@@ -1,0 +1,15 @@
+[
+  {"id": "n1", "who": "nora", "seed": 11, "ex": 0.6, "cfg": 0.5, "text": "Tu hermana me dijo que te encontraría aquí."},
+  {"id": "i1", "who": "idris", "seed": 21, "ex": 0.5, "cfg": 0.5, "text": "Mi hermana habla demasiado."},
+  {"id": "n2", "who": "nora", "seed": 12, "ex": 0.65, "cfg": 0.55, "text": "Me han dado lo de Lisboa. Empiezo en enero."},
+  {"id": "n3", "who": "nora", "seed": 13, "ex": 0.7, "cfg": 0.55, "text": "Lo he mirado todo, Idris. Los vuelos, todo."},
+  {"id": "i2", "who": "idris", "seed": 22, "ex": 0.6, "cfg": 0.45, "text": "¿Y yo dónde estoy en todo eso?"},
+  {"id": "n4", "who": "nora", "seed": 14, "ex": 0.75, "cfg": 0.45, "text": "En todo. Por eso he venido."},
+  {"id": "i3", "who": "idris", "seed": 23, "ex": 0.6, "cfg": 0.4, "text": "No. Estoy al final. Como la habitación que sobra."},
+  {"id": "i4", "who": "idris", "seed": 24, "ex": 0.85, "cfg": 0.3, "text": "¿En qué tormento te encuentras... que no me dejas ser tu mar muerto?"},
+  {"id": "n5", "who": "nora", "seed": 15, "ex": 1.1, "cfg": 0.3, "text": "Tenía miedo, ¿vale?... Me daba pánico... que se me rompiera en las manos."},
+  {"id": "i5", "who": "idris", "seed": 25, "ex": 0.7, "cfg": 0.3, "text": "No supiste sostener lo que tenías entre las manos,"},
+  {"id": "i6", "who": "idris", "seed": 26, "ex": 0.7, "cfg": 0.3, "text": "y ahora me miras con la palma vacía,"},
+  {"id": "i7", "who": "idris", "seed": 27, "ex": 0.7, "cfg": 0.3, "text": "esperando que me entrelace a tus planes."},
+  {"id": "i8", "who": "idris", "seed": 28, "ex": 0.75, "cfg": 0.3, "text": "Llévate esto. Es lo que queda cuando el agua se va."}
+]
